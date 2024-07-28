@@ -35,7 +35,9 @@ async function getData(slug?: string[]) {
       page: undefined,
     };
   }
-  const page = (await sanityClient.getDocument(data._id)) as Page | undefined;
+  const page = (await sanityClient.getDocument(data._id, {})) as
+    | Page
+    | undefined;
   console.log(page);
   return {
     page,

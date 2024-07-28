@@ -26,8 +26,8 @@ export default function USPList({ uspListContent }: Props) {
               );
               return (
                 <div key={index} className="bg-gray-50 px-8 py-10 rounded-md">
-                  <div className="w-20 py-6 flex justify-center bg-gray-100 rounded-md mb-4">
-                    <Icon />
+                  <div className="w-16 py-3 flex justify-center bg-gray-100 rounded-md mb-4">
+                    <Icon className="text-3xl" />
                   </div>
                   <h4 className="font-medium text-gray-700 text-lg mb-4">
                     {usp.title}

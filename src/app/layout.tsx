@@ -17,15 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={"bg-gray-100 " + inter.className}>
-        <section>
-          <div className="container pt-8 max-w-screen-xl mx-auto px-4">
+        <section className=" pt-8 ">
+          {/* <div className="container max-w-screen-xl mx-auto px-4">
             <nav className="flex items-center justify-between mb-40">
-              {/* <img src="assets/image/navbar-logo.png" alt="Logo" /> */}
+              <img src="assets/image/navbar-logo.png" alt="Logo" />
               <button className="px-7 py-3 md:px-9 md:py-4 bg-white font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-700 hover:text-white transition ease-linear duration-50">
                 Get my CV
               </button>
             </nav>
-          </div>
+          </div> */}
         </section>
         {children}
       </body>

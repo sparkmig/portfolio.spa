@@ -37,9 +37,15 @@ export type ContentSpotTypes = 'section' | 'hero' | 'uspList' | 'projects' | 'ed
 
 export type HeroContent = ContentSpotBase<'hero'> & {
     name: string;
-    jobTitle: string;
+    title: string;
     shortDesc: string;
     picture: Reference
+    ctas: Array<CTA>
+}
+
+export type CTA = {
+    text: string;
+    action: string
 }
 
 export type USPListContent = ContentSpotBase<'uspList'> & {
