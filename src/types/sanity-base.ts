@@ -15,19 +15,35 @@ export type ContentPage = SanityBase<'contentPage'> & {
     contentSpots: Array<ContentSpots>
 }
 
-type ContentSpots =  Section;
+export type ContentSpots =  Section | HeroContent | USPListContent | ProjectsContent | EducationContent;
 
-type ContentSpotBase<T extends ContentSpotTypes> = {
+export type ContentSpotBase<T extends ContentSpotTypes> = {
     _type: T;
     _key: string;
 }
 
-type Section = ContentSpotBase<'section'> & {
+export type Section = ContentSpotBase<'section'> & {
     header: string;
     description: string;
 }
 
 
-type ContentSpotTypes = 'section';
+export type ContentSpotTypes = 'section' | 'hero' | 'uspList' | 'projects' | 'education';
 
-export type Page = ContentPage | HomePage; 
+export type HeroContent = ContentSpotBase<'hero'> & {
+
+}
+
+export type USPListContent = ContentSpotBase<'uspList'> & {
+
+}
+
+export type ProjectsContent = ContentSpotBase<'projects'> & {
+
+}
+
+export type EducationContent = ContentSpotBase<'education'> & {
+
+}
+
+export type Page = ContentPage | HomePage 

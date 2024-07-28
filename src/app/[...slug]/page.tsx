@@ -3,6 +3,7 @@ import { pageTreeConfig } from "../../../page-tree.config";
 import sanityClient from "../../../sanity-client";
 import { Page } from "@/types/sanity-base";
 import ContentPage from "../../components/content-page/content-page.component";
+import Hero from "@/components/hero/hero.component";
 type Props = {
   params: {
     slug?: string[];
@@ -13,8 +14,6 @@ export default async function DynamicPage({ params }: Props) {
   const data = await getData(params.slug);
 
   switch (data.page?._type) {
-    case "homePage":
-      return <div>Jeg er en forside</div>;
     case "contentPage":
       return <ContentPage contentPage={data.page}></ContentPage>;
     default:
@@ -27,8 +26,10 @@ async function getData(slug?: string[]) {
     config: pageTreeConfig,
     client: sanityClient,
   });
-  const path = "/" + (slug?.join("/") ?? "");
-  const data = await pageTreeClient.getPageMetadataByPath(path);
+  const path = "/" + (slug?.join("/") ?? "home");
+  const data = await pageTreeClient.getPageMetadataByPath(
+    path.toLocaleLowerCase()
+  );
   if (!data) {
     return {
       page: undefined,
