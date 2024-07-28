@@ -42,7 +42,13 @@ export type HeroContent = ContentSpotBase<'hero'> & {
 }
 
 export type USPListContent = ContentSpotBase<'uspList'> & {
+    usps: Array<USP>;
+}
 
+export type USP = {
+    title: string;
+    shortDesc: string;
+    icon: string;
 }
 
 export type ProjectsContent = ContentSpotBase<'projects'> & {

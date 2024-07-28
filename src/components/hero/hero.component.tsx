@@ -15,7 +15,14 @@ export default function Hero({ heroContent }: Props) {
       <div className="container max-w-screen-xl mx-auto px-4">
         <div className="text-center">
           <div className="flex justify-center mb-16">
-            <Image width={200} height={200} src={pictureUrl} alt=""></Image>
+            <Image
+              priority={false}
+              loading="lazy"
+              width={200}
+              height={200}
+              src={pictureUrl}
+              alt=""
+            ></Image>
           </div>
           <h6 className="font-medium text-gray-600 text-lg md:text-2xl uppercase mb-8">
             {heroContent.name}
