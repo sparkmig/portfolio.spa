@@ -20,9 +20,12 @@ export default function Projects({ projectsContents }: Props) {
           </div>
           <div className="space-y-6 lg:w-5/12">
             {projectsContents.projects &&
-              projectsContents.projects.map((project) => {
+              projectsContents.projects.map((project, index) => {
                 return (
-                  <div className="flex space-x-6 bg-gray-50  px-8 py-10 rounded-md lg:w-auto ">
+                  <div
+                    key={index}
+                    className="flex space-x-6 bg-gray-50  px-8 py-10 rounded-md lg:w-auto "
+                  >
                     <div>
                       <h1 className="font-semibold text-gray-700 text-xl md:text-2xl mb-5">
                         {project.title}

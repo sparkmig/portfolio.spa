@@ -20,12 +20,12 @@ export default function USPList({ uspListContent }: Props) {
       <div className="container max-w-screen-xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {uspListContent.usps &&
-            uspListContent.usps.map(async (usp) => {
+            uspListContent.usps.map(async (usp, index) => {
               const Icon = await import("react-icons/fa").then(
                 (t) => (t[usp.icon] as IconType) ?? t["FaQuestion"]
               );
               return (
-                <div className="bg-gray-50 px-8 py-10 rounded-md">
+                <div key={index} className="bg-gray-50 px-8 py-10 rounded-md">
                   <div className="w-20 py-6 flex justify-center bg-gray-100 rounded-md mb-4">
                     <Icon />
                   </div>
