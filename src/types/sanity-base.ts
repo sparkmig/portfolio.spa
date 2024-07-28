@@ -27,11 +27,18 @@ export type Section = ContentSpotBase<'section'> & {
     description: string;
 }
 
+export type Reference = {
+    _ref: string;
+    _type: 'reference'
+}
 
 export type ContentSpotTypes = 'section' | 'hero' | 'uspList' | 'projects' | 'education';
 
 export type HeroContent = ContentSpotBase<'hero'> & {
-
+    name: string;
+    jobTitle: string;
+    shortDesc: string;
+    picture: Reference
 }
 
 export type USPListContent = ContentSpotBase<'uspList'> & {

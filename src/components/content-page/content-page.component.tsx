@@ -21,7 +21,7 @@ export default function ContentPage({ contentPage }: Props) {
           </div>
         );
       case "hero":
-        return <Hero></Hero>;
+        return <Hero heroContent={content}></Hero>;
       case "uspList":
         return <USPList></USPList>;
       case "projects":
