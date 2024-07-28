@@ -1,4 +1,10 @@
-export default function Education() {
+import { EducationContent } from "@/types/sanity-base";
+
+type Props = {
+  educationContent: EducationContent;
+};
+
+export default function Education({ educationContent }: Props) {
   return (
     <section className="py-10 md:py-16">
       <div className="container max-w-screen-xl mx-auto px-4">

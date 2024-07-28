@@ -14,12 +14,13 @@ export default function Hero({ heroContent }: Props) {
     <section className="py-10 md:py-16">
       <div className="container max-w-screen-xl mx-auto px-4">
         <div className="text-center">
-          <div className="flex justify-center mb-16">
+          <div className="flex justify-center mb-16 ">
             <Image
+              className="rounded-full aspect-square object-cover"
               priority={false}
               loading="lazy"
-              width={200}
-              height={200}
+              width={250}
+              height={250}
               src={pictureUrl}
               alt=""
             ></Image>

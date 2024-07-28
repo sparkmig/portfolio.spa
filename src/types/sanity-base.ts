@@ -1,4 +1,5 @@
 import { SanityDocument } from "@sanity/client"
+import exp from "constants";
 
 export type SanityBase<T extends SanityContentTypes> = SanityDocument<Record<string, any>> & {
     _type: T
@@ -64,7 +65,9 @@ export type Project = {
 }
 
 export type EducationContent = ContentSpotBase<'education'> & {
-
+    title: string;
+    summary: string;
+    //educations: Array<Education>
 }
 
 export type Page = ContentPage | HomePage 

@@ -27,7 +27,7 @@ export default function ContentPage({ contentPage }: Props) {
       case "projects":
         return <Projects projectsContents={content}></Projects>;
       case "education":
-        return <Education></Education>;
+        return <Education educationContent={content}></Education>;
       default:
         return <div>unkown content spot</div>;
     }
