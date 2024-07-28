@@ -24,10 +24,10 @@ export default function Hero({ heroContent }: Props) {
               alt=""
             ></Image>
           </div>
-          <h6 className="font-medium text-gray-600 text-lg md:text-2xl uppercase mb-8">
+          <h6 className="font-medium text-gray-600 text-lg md:text-2xl mb-8">
             {heroContent.name}
           </h6>
-          <h1 className="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8">
+          <h1 className="font-bold text-gray-900 text-4xl md:text-7xl leading-none mb-8">
             {heroContent.jobTitle}
           </h1>
           <p className="font-normal text-gray-600 text-md md:text-xl mb-16">

@@ -25,7 +25,7 @@ export default function ContentPage({ contentPage }: Props) {
       case "uspList":
         return <USPList uspListContent={content}></USPList>;
       case "projects":
-        return <Projects></Projects>;
+        return <Projects projectsContents={content}></Projects>;
       case "education":
         return <Education></Education>;
       default:

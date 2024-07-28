@@ -52,7 +52,15 @@ export type USP = {
 }
 
 export type ProjectsContent = ContentSpotBase<'projects'> & {
+    title: string;
+    desc: string;
+    projects: Array<Project>
+}
 
+export type Project = {
+    title: string;
+    desc: string;
+    link?: string;
 }
 
 export type EducationContent = ContentSpotBase<'education'> & {
