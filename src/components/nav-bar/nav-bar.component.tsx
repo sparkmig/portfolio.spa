@@ -12,7 +12,7 @@ export default function NavBar() {
     >
       <div className="container max-w-screen-xl mx-auto px-4">
         <a
-          className={`block md:hidden float-end p-2 mt-2 rounded-md bg-gray-50 ${isVisible ? "" : "shadow-sm"}`}
+          className={`block md:hidden cursor-pointer float-end p-2 mt-2 rounded-md bg-gray-50 ${isVisible ? "" : "shadow-sm"}`}
           onClick={() => setIsVisible(!isVisible)}
         >
           {isVisible ? (
@@ -22,7 +22,8 @@ export default function NavBar() {
           )}
         </a>
         <nav
-          className={`flex items-center justify-between md:flex ${isVisible ? "visible" : "hidden"}`}
+          onClick={() => setIsVisible(false)}
+          className={`flex items-center justify-between  md:flex ${isVisible ? "visible" : "hidden"}`}
         >
           <Link
             className="hidden md:block px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold text-gray-700 text-md rounded-md hover:text-gray-500 transition ease-linear duration-50"
