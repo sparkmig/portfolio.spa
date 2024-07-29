@@ -25,7 +25,7 @@ export default function Projects({ projectsContents }: Props) {
           <div className="space-y-6 lg:w-5/12">
             {projectsContents.projects &&
               projectsContents.projects.map((project, index) => {
-                var ref = useRef<HTMLDivElement>(null);
+                const ref = useRef<HTMLDivElement>(null);
                 const isVisible = useIsVisible(ref);
                 console.log(isVisible);
                 return (

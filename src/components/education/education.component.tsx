@@ -1,4 +1,8 @@
+"use client";
+
+import { useIsVisible } from "@/hooks/use-is-visible";
 import { EducationContent } from "@/types/sanity-base";
+import { useRef } from "react";
 
 type Props = {
   educationContent: EducationContent;
@@ -8,109 +12,44 @@ export default function Education({ educationContent }: Props) {
   return (
     <section className="py-10 md:py-16">
       <div className="container max-w-screen-xl mx-auto px-4">
-        <h1 className="font-medium text-gray-700 text-3xl md:text-4xl mb-5">
-          Education
+        <h1 className="font-semibold text-gray-700 text-3xl md:text-4xl mb-5">
+          {educationContent.header}
         </h1>
-        <p className="font-normal text-gray-500 text-xs md:text-base mb-20">
-          Below is a summary of the places I studied
+        <p className="font-normal text-gray-500 text-xs md:text-base mb-10">
+          {educationContent.summary}
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-gray-50 px-8 py-10 rounded-md">
-            <h4 className="font-medium text-gray-700 text-lg mb-4">
-              2015 – 2016
-            </h4>
-            <p className="font-normal text-gray-500 text-md mb-4">
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit,
-              sed do eiusmod tempor <br /> incididunt ut labore et dolore magna
-              aliqua.
-            </p>
-            <div className="relative">
-              <h6 className="font-semibold text-gray-500 text-md relative z-10">
-                See the place here
-              </h6>
-              <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-            </div>
-          </div>
-          <div className="bg-gray-50 px-8 py-10 rounded-md">
-            <h4 className="font-medium text-gray-700 text-lg mb-4">
-              2015 – 2016
-            </h4>
-            <p className="font-normal text-gray-500 text-md mb-4">
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit,
-              sed do eiusmod tempor <br /> incididunt ut labore et dolore magna
-              aliqua.
-            </p>
-            <div className="relative">
-              <h6 className="font-semibold text-gray-500 text-md relative z-10">
-                See the place here
-              </h6>
-              <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-            </div>
-          </div>
-          <div className="bg-gray-50 px-8 py-10 rounded-md">
-            <h4 className="font-medium text-gray-700 text-lg mb-4">
-              2015 – 2016
-            </h4>
-            <p className="font-normal text-gray-500 text-md mb-4">
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit,
-              sed do eiusmod tempor <br /> incididunt ut labore et dolore magna
-              aliqua.
-            </p>
-            <div className="relative">
-              <h6 className="font-semibold text-gray-500 text-md relative z-10">
-                See the place here
-              </h6>
-              <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-            </div>
-          </div>
-          <div className="bg-gray-50 px-8 py-10 rounded-md">
-            <h4 className="font-medium text-gray-700 text-lg mb-4">
-              2015 – 2016
-            </h4>
-            <p className="font-normal text-gray-500 text-md mb-4">
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit,
-              sed do eiusmod tempor <br /> incididunt ut labore et dolore magna
-              aliqua.
-            </p>
-            <div className="relative">
-              <h6 className="font-semibold text-gray-500 text-md relative z-10">
-                See the place here
-              </h6>
-              <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-            </div>
-          </div>
-          <div className="bg-gray-50 px-8 py-10 rounded-md">
-            <h4 className="font-medium text-gray-700 text-lg mb-4">
-              2015 – 2016
-            </h4>
-            <p className="font-normal text-gray-500 text-md mb-4">
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit,
-              sed do eiusmod tempor <br /> incididunt ut labore et dolore magna
-              aliqua.
-            </p>
-            <div className="relative">
-              <h6 className="font-semibold text-gray-500 text-md relative z-10">
-                See the place here
-              </h6>
-              <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-            </div>
-          </div>
-          <div className="bg-gray-50 px-8 py-10 rounded-md">
-            <h4 className="font-medium text-gray-700 text-lg mb-4">
-              2015 – 2016
-            </h4>
-            <p className="font-normal text-gray-500 text-md mb-4">
-              Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit,
-              sed do eiusmod tempor <br /> incididunt ut labore et dolore magna
-              aliqua.
-            </p>
-            <div className="relative">
-              <h6 className="font-semibold text-gray-500 text-md relative z-10">
-                See the place here
-              </h6>
-              <span className="w-32 h-1 bg-blue-200 absolute bottom-1 left-0 z-0"></span>
-            </div>
-          </div>
+        <div className="gap-6">
+          {educationContent.educations.map((education) => {
+            const ref = useRef<HTMLDivElement>(null);
+            const isVisible = useIsVisible(ref);
+            return (
+              <div
+                ref={ref}
+                className={`bg-gray-50 shadow-sm px-8 py-10 transition-opacity ease-in duration-200 rounded-md ${isVisible ? "opacity-100" : "opacity-0"}`}
+              >
+                <h4 className="font-medium text-gray-700 text-lg">
+                  {education.title}
+                </h4>
+                <h6 className="font-normal text-gray-500 mb-4">
+                  {education.school}, {education.year}
+                </h6>
+                <p className="font-normal text-gray-500 text-md">
+                  {education.description}
+                </p>
+                {education.link && (
+                  <div className="relative mt-4">
+                    <a
+                      href={education.link}
+                      target="_blank"
+                      className="font-semibold text-blue-400 text-md relative z-10 cursor-pointer hover:text-blue-500"
+                    >
+                      Gå til deres hjemmeside
+                    </a>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
