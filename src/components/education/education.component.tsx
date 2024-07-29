@@ -10,7 +10,7 @@ type Props = {
 
 export default function Education({ educationContent }: Props) {
   return (
-    <section className="py-10 md:py-16">
+    <section className="py-10 md:py-16" id={educationContent._key}>
       <div className="container max-w-screen-xl mx-auto px-4">
         <h1 className="font-semibold text-gray-700 text-3xl md:text-4xl mb-5">
           {educationContent.header}

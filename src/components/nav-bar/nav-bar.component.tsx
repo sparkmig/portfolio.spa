@@ -7,10 +7,12 @@ import { FaBurger, FaX } from "react-icons/fa6";
 export default function NavBar() {
   const [isVisible, setIsVisible] = useState(false);
   return (
-    <section className="py-3 fixed top-0 w-screen shadow-sm bg-gray-50 z-10">
+    <section
+      className={`py-1 fixed top-0 w-screen md:shadow-sm md:bg-gray-50 z-10 ${isVisible ? "bg-gray-50 shadow-sm" : "bg-transparent"}`}
+    >
       <div className="container max-w-screen-xl mx-auto px-4">
-        <button
-          className="visible md:hidden float-end p-2 rounded-md"
+        <a
+          className={`block md:hidden float-end p-2 mt-2 rounded-md bg-gray-50 ${isVisible ? "" : "shadow-sm"}`}
           onClick={() => setIsVisible(!isVisible)}
         >
           {isVisible ? (
@@ -18,7 +20,7 @@ export default function NavBar() {
           ) : (
             <FaBars className="text-xl"></FaBars>
           )}
-        </button>
+        </a>
         <nav
           className={`flex items-center justify-between md:flex ${isVisible ? "visible" : "hidden"}`}
         >
@@ -31,19 +33,19 @@ export default function NavBar() {
           <div className="gap-x-2 flex flex-col md:flex-row">
             <Link
               className="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-200 transition ease-linear duration-50"
-              href="#projekter"
+              href="#d30f4e803626"
             >
               Projekter
             </Link>
             <Link
               className="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-200 transition ease-linear duration-50"
-              href="#projekter"
+              href="#2614b300d767"
             >
               Erfaring
             </Link>
             <Link
               className="px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold text-gray-700 text-md rounded-md hover:bg-gray-200 transition ease-linear duration-50"
-              href="#projekter"
+              href="#f18c67a3aeba"
             >
               Uddannelse
             </Link>
