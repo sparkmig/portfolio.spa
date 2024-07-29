@@ -25,7 +25,7 @@ export default function Education({ educationContent }: Props) {
             return (
               <div
                 ref={ref}
-                className={`bg-gray-50 shadow-sm px-8 py-10 transition-opacity ease-in duration-200 rounded-md ${isVisible ? "opacity-100" : "opacity-0"}`}
+                className={`bg-gray-50 px-8 py-10 transition-opacity ease-in duration-200 rounded-md ${isVisible ? "opacity-100" : "opacity-0"}`}
               >
                 <h4 className="font-medium text-gray-700 text-lg">
                   {education.title}
