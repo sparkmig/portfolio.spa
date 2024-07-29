@@ -1,7 +1,7 @@
 "use client";
 
 import { useIsVisible } from "@/hooks/use-is-visible";
-import { ProjectsContent } from "@/types/sanity-base";
+import { Project, ProjectsContent } from "@/types/sanity-base";
 import { DetailedHTMLProps, HTMLAttributes, useRef } from "react";
 import { FaExternalLinkAlt, FaLink } from "react-icons/fa";
 
@@ -24,45 +24,47 @@ export default function Projects({ projectsContents }: Props) {
           </div>
           <div className="space-y-6 lg:w-5/12">
             {projectsContents.projects &&
-              projectsContents.projects.map((project, index) => {
-                const ref = useRef<HTMLDivElement>(null);
-                const isVisible = useIsVisible(ref);
-                console.log(isVisible);
-                return (
-                  <div
-                    ref={ref}
-                    key={index}
-                    className={`flex space-x-6 transition-opacity ease-in duration-500 bg-gray-50 px-8 py-10 rounded-md lg:w-auto ${isVisible ? "opacity-100" : "opacity-0"}`}
-                  >
-                    <div>
-                      <h1 className="font-semibold text-gray-700 text-xl md:text-2xl mb-5">
-                        {project.title}
-                      </h1>
-                      <p
-                        className={
-                          "font-normal text-gray-500 whitespace-break-spaces " +
-                            project.link && "mb-5"
-                        }
-                      >
-                        {project.desc}
-                      </p>
-
-                      {project.link && (
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          className="text-blue-400 hover:underline cursor-pointer flex items-center"
-                        >
-                          Gå til projekt
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
+              projectsContents.projects.map((project, index) => (
+                <Item key={index} project={project}></Item>
+              ))}
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function Item({ project }: { project: Project }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useIsVisible(ref);
+  return (
+    <div
+      ref={ref}
+      className={`flex space-x-6 transition-opacity ease-in duration-500 bg-gray-50 px-8 py-10 rounded-md lg:w-auto ${isVisible ? "opacity-100" : "opacity-0"}`}
+    >
+      <div>
+        <h1 className="font-semibold text-gray-700 text-xl md:text-2xl mb-5">
+          {project.title}
+        </h1>
+        <p
+          className={
+            "font-normal text-gray-500 whitespace-break-spaces " +
+              project.link && "mb-5"
+          }
+        >
+          {project.desc}
+        </p>
+
+        {project.link && (
+          <a
+            href={project.link}
+            target="_blank"
+            className="text-blue-400 hover:underline cursor-pointer flex items-center"
+          >
+            Gå til projekt
+          </a>
+        )}
+      </div>
+    </div>
   );
 }
