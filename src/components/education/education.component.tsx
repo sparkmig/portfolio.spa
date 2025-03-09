@@ -21,7 +21,7 @@ export default function Education({ educationContent }: Props) {
         <p className="font-normal text-gray-500 text-xs md:text-base mb-10">
           {educationContent.summary}
         </p>
-        <div className="gap-6">
+        <div className="gap-6 flex flex-col">
           {educationContent.educations.map((education, index) => (
             <Item key={index} education={education}></Item>
           ))}

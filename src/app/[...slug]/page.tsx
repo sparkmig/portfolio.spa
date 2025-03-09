@@ -3,7 +3,6 @@ import { pageTreeConfig } from "../../../page-tree.config";
 import sanityClient from "../../../sanity-client";
 import { Page } from "@/types/sanity-base";
 import ContentPage from "../../components/content-page/content-page.component";
-import Hero from "@/components/hero/hero.component";
 type Props = {
   params: {
     slug?: string[];
