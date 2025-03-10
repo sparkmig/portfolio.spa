@@ -36,7 +36,7 @@ async function getPath({ _id, _type: type }: RevalidateRequest) {
   switch (type) {
     case "contentPage":
       const metadata = await pageTreeClient.getPageMetadataById(_id);
-      return metadata?.path;
+      return metadata?.path == "/home" ? "/" : metadata?.path;
     default:
       return null;
   }
