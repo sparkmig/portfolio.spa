@@ -18,20 +18,15 @@ export type ContentPage = SanityBase<"contentPage"> & {
 };
 
 export type ContentSpots =
-  | Section
   | HeroContent
-  | USPListContent
   | ProjectsContent
-  | EducationContent;
+  | SkillsContent
+  | ExperienceContent
+  | ContactContent;
 
 export type ContentSpotBase<T extends ContentSpotTypes> = {
   _type: T;
   _key: string;
-};
-
-export type Section = ContentSpotBase<"section"> & {
-  header: string;
-  description: string;
 };
 
 export type Reference = {
@@ -40,11 +35,23 @@ export type Reference = {
 };
 
 export type ContentSpotTypes =
-  | "section"
   | "hero"
-  | "uspList"
   | "projects"
-  | "education";
+  | "skills"
+  | "experience"
+  | "contact";
+
+export type SkillsContent = ContentSpotBase<"skills"> & {
+  title: string;
+  description: string;
+  items: Skill[];
+};
+
+export type Skill = {
+  name: string;
+  icon: string;
+  description: string;
+};
 
 export type HeroContent = ContentSpotBase<"hero"> & {
   name: string;
@@ -59,16 +66,6 @@ export type CTA = {
   action: string;
 };
 
-export type USPListContent = ContentSpotBase<"uspList"> & {
-  usps: Array<USP>;
-};
-
-export type USP = {
-  title: string;
-  shortDesc: string;
-  icon: string;
-};
-
 export type ProjectsContent = ContentSpotBase<"projects"> & {
   title: string;
   desc: string;
@@ -76,23 +73,42 @@ export type ProjectsContent = ContentSpotBase<"projects"> & {
 };
 
 export type Project = {
+  _key: string;
+  imageSrc: string;
   title: string;
   desc: string;
   link?: string;
+  liveUrl: string;
+  githubUrl: string;
+  image: Reference;
+  category: string;
+  technologies: Array<string>;
 };
 
-export type EducationContent = ContentSpotBase<"education"> & {
-  header: string;
-  summary: string;
-  educations: Array<Education>;
-};
-
-export type Education = {
+export type ExperienceItem = {
   title: string;
-  school: string;
-  year: string;
+  company: string;
+  period: string;
   description: string;
-  link?: string;
+  skills: string[];
+};
+
+export type ExperienceContent = ContentSpotBase<"experience"> & {
+  title: string;
+  description: string;
+  items: ExperienceItem[];
+};
+
+export type Social = {
+  platform: string;
+  url: string;
+};
+
+export type ContactContent = ContentSpotBase<"contact"> & {
+  title: string;
+  description: string;
+  email: string;
+  socials: Social[];
 };
 
 export type Page = ContentPage | HomePage;

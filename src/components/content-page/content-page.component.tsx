@@ -1,33 +1,27 @@
 import * as SanityTypes from "../../types/sanity-base";
-import Education from "../education/education.component";
-import Hero from "../hero/hero.component";
-import Projects from "../projects/projects.component";
-import USPList from "../usp-list/usp-list.component";
+import Contact from "../contact/Contact";
+import Experience from "../experience/Experience";
+import Hero from "../hero/Hero";
+import Projects from "../projects/Projects";
+import Skills from "../skills/Skills";
 
 type Props = {
   contentPage: SanityTypes.ContentPage;
 };
 
 export default function ContentPage({ contentPage }: Props) {
-  return contentPage.contentSpots?.map((content) => {
+  return contentPage.contentSpots?.map((content, index) => {
     switch (content._type) {
-      case "section":
-        return (
-          <div className="rounded-lg shadow-slate-300 m-5 bg-slate-200 p-20">
-            <div className=" w-2/4">
-              <h1 className="font-bold text-4xl">{content.header}</h1>
-              <p>{content.description}</p>
-            </div>
-          </div>
-        );
       case "hero":
-        return <Hero heroContent={content}></Hero>;
-      case "uspList":
-        return <USPList uspListContent={content}></USPList>;
+        return <Hero content={content}></Hero>;
       case "projects":
-        return <Projects projectsContents={content}></Projects>;
-      case "education":
-        return <Education educationContent={content}></Education>;
+        return <Projects content={content}></Projects>;
+      case "skills":
+        return <Skills content={content}></Skills>;
+      case "experience":
+        return <Experience content={content}></Experience>;
+      case "contact":
+        return <Contact content={content}></Contact>;
       default:
         return <div>unkown content spot</div>;
     }

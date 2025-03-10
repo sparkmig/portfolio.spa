@@ -3,6 +3,7 @@ import { pageTreeConfig } from "../../../page-tree.config";
 import sanityClient from "../../../sanity-client";
 import { Page } from "@/types/sanity-base";
 import ContentPage from "../../components/content-page/content-page.component";
+import { notFound } from "next/navigation";
 type Props = {
   params: {
     slug?: string[];
@@ -16,7 +17,7 @@ export default async function DynamicPage({ params }: Props) {
     case "contentPage":
       return <ContentPage contentPage={data.page}></ContentPage>;
     default:
-      return <div>404</div>;
+      notFound();
   }
 }
 
@@ -37,7 +38,6 @@ async function getData(slug?: string[]) {
   const page = (await sanityClient.getDocument(data._id, {})) as
     | Page
     | undefined;
-  console.log(page);
   return {
     page,
   };
