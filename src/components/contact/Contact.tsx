@@ -73,7 +73,7 @@ export default function Contact({ content }: Props) {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          <Card className="border border-muted">
+          {/* <Card className="border border-muted">
             <CardHeader>
               <CardTitle>Send Me a Message</CardTitle>
               <CardDescription>
@@ -130,7 +130,7 @@ export default function Contact({ content }: Props) {
                 </Button>
               </form>
             </CardContent>
-          </Card>
+          </Card> */}
 
           <Card className="border border-muted">
             <CardHeader>
