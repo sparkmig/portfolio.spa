@@ -55,12 +55,14 @@ export default function Hero({ content }: Props) {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="outline" size="lg" className="rounded-full">
-                <a href="#projects">View Projects</a>
-              </Button>
+              <a href="#projects">
+                <Button variant="outline" size="lg" className="rounded-full">
+                  View Projects
+                </Button>
+              </a>
             </div>
           </div>
-          <div className="flex justify-center lg:justify-end">
+          <div className="-order-1 lg:order-1 flex justify-center lg:justify-end">
             <div className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] rounded-full overflow-hidden border-4 border-background shadow-xl">
               <Image
                 src={pictureUrl || "/placeholder.svg"}
