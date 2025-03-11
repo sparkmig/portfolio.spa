@@ -1,11 +1,4 @@
-"use client";
-
 import type React from "react";
-
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Card,
   CardContent,
@@ -15,36 +8,29 @@ import {
 } from "@/components/ui/card";
 import { Github, Linkedin, Twitter, Mail, Send } from "lucide-react";
 import { ContactContent } from "@/types/sanity-base";
+import Form from "./Form";
 
 type Props = {
   content: ContactContent;
 };
 
 export default function Contact({ content }: Props) {
+  async function submitAction(payload: any, form: FormData) {
+    "use server";
+    const age = form.get("age");
+    if (age) {
+      return { error: "You are a bot" };
+    }
+    const email = form.get("email");
+    const message = form.get("message");
+    const name = form.get("name");
+    await new Promise((resolve: any) => setTimeout(resolve, 1000));
+    console.log({ name, email, message });
+
+    return { message: "Message sent" };
+  }
+
   const { title, description, email, socials } = content;
-
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // This would typically send the form data to a server
-    console.log("Form submitted:", formData);
-    // Reset form
-    setFormData({ name: "", email: "", message: "" });
-    // Show success message (in a real app)
-    alert("Message sent! I'll get back to you soon.");
-  };
 
   const getSocialIcon = (platform: string) => {
     const icons: Record<string, React.ReactNode> = {
@@ -73,65 +59,7 @@ export default function Contact({ content }: Props) {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2">
-          {/* <Card className="border border-muted">
-            <CardHeader>
-              <CardTitle>Send Me a Message</CardTitle>
-              <CardDescription>
-                Fill out the form below and Ill get back to you as soon as
-                possible.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="Your email"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Your message"
-                    rows={5}
-                    required
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  <Send className="mr-2 h-4 w-4" />
-                  Send Message
-                </Button>
-              </form>
-            </CardContent>
-          </Card> */}
-
+          <Form submitAction={submitAction}></Form>
           <Card className="border border-muted">
             <CardHeader>
               <CardTitle>Contact Information</CardTitle>
