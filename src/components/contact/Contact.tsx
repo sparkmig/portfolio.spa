@@ -38,11 +38,7 @@ export default function Contact({ content }: Props) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // This would typically send the form data to a server
-    console.log("Form submitted:", formData);
-    // Reset form
     setFormData({ name: "", email: "", message: "" });
-    // Show success message (in a real app)
     alert("Message sent! I'll get back to you soon.");
   };
 

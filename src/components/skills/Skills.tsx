@@ -18,8 +18,6 @@ type Props = {
 
 export default function Skills({ content }: Props) {
   const { items, description, title } = content;
-  // Default skills if none are provided
-
   const getIcon = (iconName: string) => {
     const icons: Record<string, React.ReactNode> = {
       code: <Code className="h-10 w-10" />,
